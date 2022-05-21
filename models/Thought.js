@@ -9,10 +9,8 @@ const thoughtSchema = new Schema(
             maxlength: 280
         },
         createdAt: {
-            date: {
-                type: Date,
-                default: Date.now
-            },
+            type: Date,
+            default: Date.now
         },
         reactions: [reactionSchema]
     },
