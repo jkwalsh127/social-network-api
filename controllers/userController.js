@@ -1,5 +1,10 @@
 const { User, Thought } = require('../models');
 
+const friendCount = async () => 
+  User.aggregate() 
+    .count('friendCount')
+    .then((numberOfFriends) => numberOfFriends);
+
 module.exports = {
 
   // Get all users
@@ -55,6 +60,38 @@ module.exports = {
           : Thought.deleteMany({ _id: { $in: user.thoughts } })
       )
       .then(() => res.json({ message: 'User and Thoughts deleted!' }))
+      .catch((err) => res.status(500).json(err));
+  },
+
+  //Add new friend to User
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user found with this id!' })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+
+  //Delete friend from User
+  removeFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friend: { friendId: req.params.friendId } } },
+      { runValidators: true, new: true },
+    )
+      .then((user) =>
+        !user
+          ? res
+            .status(404)
+            .json({ message: 'No user found with that ID' })
+          : res.json(user)
+      )
       .catch((err) => res.status(500).json(err));
   },
 };
