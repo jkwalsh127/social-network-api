@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, mongoose } = require('mongoose');
 
 const userSchema = new Schema(
     {
@@ -12,10 +12,6 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: true,
-            validate: {
-                validator: () => Promise.resolve(false),
-                message: 'Email validation failed'
-              }
         },
         thoughts: [
             {
@@ -39,5 +35,10 @@ const userSchema = new Schema(
 );
 
 const User = model('user', userSchema);
+
+// userSchema.path('email').validate(async (email) => {
+//     const emailCount = await mongoose.models.User.countDocuments({ email })
+//     return !emailCount
+// }, 'Email is already being used')
 
 module.exports = User;
