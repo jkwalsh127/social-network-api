@@ -3,6 +3,9 @@ const { User, Thought } = require('../models');
 const friendCount = async (userId) =>
   User.aggregate([
     {
+      $unwind: '$friends',
+    },
+    {
       $group: {
         _id: userId,
         friendCount: { $sum: '$friends' }
