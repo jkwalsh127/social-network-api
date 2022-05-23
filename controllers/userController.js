@@ -1,23 +1,33 @@
 const { User, Thought } = require('../models');
 
+const friendCount = async (userId) =>
+  User.aggregate([
+    {
+      $group: {
+        _id: userId,
+        friendCount: { $sum: '$friends' }
+      }
+    }
+  ]);
+
 module.exports = {
 
   // Get all users
   getUsers(req, res) {
     User.find()
-      .then((users) => res.json(users))
-      .catch((err) => res.status(500).json(err));
-      // .then(async (user) => {
-      //   const userObj = {
-      //     user,
-      //     friendCount: await friendCount(),
-      //   };
-      //   return res.json(userObj);
-      // })
-      // .catch((err) => {
-      //   console.log(err);
-      //   return res.status(500).json(err);
-      // });
+      // .then((users) => res.json(users))
+      // .catch((err) => res.status(500).json(err));
+      .then(async (users) => {
+        const userObj = {
+          users,
+          friendCount: await friendCount(req.params.userId),
+        };
+        return res.json(userObj);
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
   },
 
   // Get a user
