@@ -1,5 +1,7 @@
 const { Schema, model, mongoose } = require('mongoose');
 
+
+
 const userSchema = new Schema(
     {
         username: {
@@ -24,7 +26,7 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
-        ]
+        ],
     },
     {
         toJSON: {
@@ -34,7 +36,14 @@ const userSchema = new Schema(
     }
 );
 
+userSchema
+    .virtual('friendCount')
+    .get(function () {
+        return this.friends.length;
+    })
+
 const User = model('user', userSchema);
+
 
 // userSchema.path('email').validate(async (email) => {
 //     const emailCount = await mongoose.models.User.countDocuments({ email })

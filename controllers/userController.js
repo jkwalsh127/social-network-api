@@ -1,43 +1,46 @@
 const { User, Thought } = require('../models');
 
-const friendCount = async () => 
-  User.aggregate() 
-    .count('friendCount')
-    .then((numberOfFriends) => numberOfFriends);
-
 module.exports = {
 
   // Get all users
   getUsers(req, res) {
     User.find()
-      .then(async (users) => {
-        const userObj = {
-          users,
-          friendCount: await friendCount(),
-        };
-        return res.json(userObj);
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+      .then((users) => res.json(users))
+      .catch((err) => res.status(500).json(err));
+      // .then(async (user) => {
+      //   const userObj = {
+      //     user,
+      //     friendCount: await friendCount(),
+      //   };
+      //   return res.json(userObj);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      //   return res.status(500).json(err);
+      // });
   },
 
   // Get a user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
     //   .select()
-      .then(async (user) => {
-        const userObj = {
-          user,
-          friendCount: await friendCount(),
-        };
-        return res.json(userObj);
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+      .then((user) => 
+        !user 
+          ? res.status(404).json({ message: 'No user with that ID' })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+      // .then(async (user) => {
+      //   const userObj = {
+      //     user,
+      //     friendCount: await friendCount(),
+      //   };
+      //   return res.json(userObj);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      //   return res.status(500).json(err);
+      // });
   },
 
   // Create a user
