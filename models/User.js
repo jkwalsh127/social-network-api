@@ -44,10 +44,4 @@ userSchema
 
 const User = model('user', userSchema);
 
-
-// userSchema.path('email').validate(async (email) => {
-//     const emailCount = await mongoose.models.User.countDocuments({ email })
-//     return !emailCount
-// }, 'Email is already being used')
-
 module.exports = User;
