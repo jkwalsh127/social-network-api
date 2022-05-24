@@ -19,6 +19,15 @@ This project was to build an API that would mimic the way a social media site mi
 ## Usage
 The following videos are walk-throughs using Insomnia to demonstrate the application's functionality.
 
+
+https://user-images.githubusercontent.com/101354032/169968919-a4e6241e-39c5-4461-ae5c-0aa716c9cb67.mp4
+
+
+https://user-images.githubusercontent.com/101354032/169968936-385f848b-342a-40b3-b15a-0cfd8d3bb27e.mp4
+
+
+https://user-images.githubusercontent.com/101354032/169968951-7680d85d-8ca1-4ecc-9bcb-77d56966f82d.mp4
+
 ### Technologies
 |   Languages/libraries   | Database Management System  |  Node Modules | Runtime Environment
 | ----------- | ----------- | ----------- |  ----------- | 
