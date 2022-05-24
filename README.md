@@ -1,13 +1,5 @@
 # social-network-api
 
-# Table of contents
-* [Description](#description)
-* [Usage](#usage)
-* [Technologies] (#technologies)
-* [Credits](#credits)
-* [Questions](#questions)
-* [License](#license)
-
 ## Description
 This project was to build an API that would mimic the way a social media site might begin integrating features, like the ability for users to add eachother as friends, for a user to make a post, and for them to be able to post reactions to other user's posts. MongoDB was used to structure the database. Models are built for Users, the Thoughts that they post, and the Reactions that could be left on other user's posts. The API routes serve up functions that the controllers initiate in order to service the requests between the user and the database. As a whole, this back-end application is capable of making the following changes to the database:
 - creating, fetching, updating, and removing users
