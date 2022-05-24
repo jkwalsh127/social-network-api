@@ -12,11 +12,16 @@ module.exports = {
   getThoughts(req, res) {
     Thought.find()
       .then(async (thoughts) => {
+
         const thoughtObj = {
           thoughts,
-          thoughtCount: await thoughtCount(),
         };
-        return res.json(thoughtObj);
+        const reactionObj = await Thought.find( { _id: thoughtObj.reactions } );
+        const thought = {
+          ...thoughtObj,
+          ...reactionObj
+        }
+        return res.json(thought);
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +47,19 @@ module.exports = {
   // create a new thought
   createThought(req, res) {
     Thought.create(req.body)
-      .then((thought) => res.json(thought))
+      .then((thought) => {
+        User.findOneAndUpdate(
+          { username: req.body.username },
+          { $push: { thoughts: thought._id } },
+          { new: true }
+        )
+          .then((user) => {
+          !user
+            ? res.status(404).json({ message: 'No user with that ID exists' })
+            : res.json(user)
+          })
+          .catch((err) => res.status(500).json(err));
+        })
       .catch((err) => res.status(500).json(err));
   },
 
