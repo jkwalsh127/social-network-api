@@ -17,15 +17,20 @@ module.exports = {
 
   // Get all users
   getUsers(req, res) {
-    User.find()
+    User.find({})
       // .then((users) => res.json(users))
       // .catch((err) => res.status(500).json(err));
       .then(async (users) => {
+
         const userObj = {
           users,
-          friendCount: await friendCount(req.params.userId),
         };
-        return res.json(userObj);
+        const friendObj = await User.find( { _id: userObj.friends });
+        const user = {
+          ...userObj,
+          ...friendObj
+        }
+        return res.json(user);
       })
       .catch((err) => {
         console.log(err);
