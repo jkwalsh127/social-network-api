@@ -32,11 +32,13 @@ https://user-images.githubusercontent.com/101354032/169972874-17f25d41-0c30-48ef
 ---
 ### Credits
 This was a solo project meant to be built from scratch, the idea provided by staff at the UC Berkeley full-stack coding bootcamp.
+
 ---
 #### Questions
 Click <a href="https://github.com/jkwalsh127" target="_blank">**here**<a> to go to my GitHub profile
----
+
 If you have any questions about this project or would just like to get in touch, you can email me at <a href="mailto:jkwalsh127@gmail.com" target="_blank">jkwalsh127@gmail.com</a>
+  
 ---
 ##### License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
