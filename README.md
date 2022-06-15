@@ -1,5 +1,8 @@
-# social-network-api
----
+# Social Network API
+|   Languages  | Database Management System  |  Node Modules | Runtime Environment
+| ----------- | ----------- | ----------- |  ----------- | 
+| ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) | ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) | ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  |   |   | mongoose  |   |
+
 ## Description
 This project was to build an API that would mimic the way a social media site might begin integrating features, like the ability for users to add eachother as friends, for a user to make a post, and for them to be able to post reactions to other user's posts. MongoDB was used to structure the database. Models are built for Users, the Thoughts that they post, and the Reactions that could be left on other user's posts. The API routes serve up functions that the controllers initiate in order to service the requests between the user and the database. As a whole, this back-end application is capable of making the following changes to the database:
 - creating, fetching, updating, and removing users
@@ -22,12 +25,6 @@ https://user-images.githubusercontent.com/101354032/169968951-7680d85d-8ca1-4ecc
 
 
 https://user-images.githubusercontent.com/101354032/169972874-17f25d41-0c30-48ef-8b31-02b183695db9.mp4
-
----
-### Technologies
-|   Languages  | Database Management System  |  Node Modules | Runtime Environment
-| ----------- | ----------- | ----------- |  ----------- | 
-| ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) | ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) | ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) | ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  |   |   | mongoose  |   |
 
 ---
 ### Credits
